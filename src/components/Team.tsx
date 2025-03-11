@@ -4,36 +4,38 @@ import { motion, useInView } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Mail, Linkedin, Twitter, Phone, Globe } from "lucide-react";
+import CEO_avatar from '/public/lovable-uploads/photo_5368398345212653732_y.jpg';
+import CTO_avatar from '/public/lovable-uploads/T032XS1SL0M-U063T2L1SBY-e179f9a1d4df-512.png';
 
 const teamMembers = [
   {
-    name: "Sarah Johnson",
-    role: "CEO & Co-Founder",
-    bio: "Sarah Johnson is a visionary entrepreneur with over 15 years of experience in building and scaling technology companies in the sales and marketing space. Prior to founding Bandera AI, Sarah served as the VP of Sales at TechGiant, where she led a team of 200+ sales professionals and consistently exceeded revenue targets by 30% year-over-year. She began her career at McKinsey & Company, advising Fortune 500 companies on digital transformation strategies. Sarah holds an MBA from Stanford University and a Bachelor's degree in Computer Science from MIT. She is passionate about leveraging AI to revolutionize how businesses approach lead generation and sales automation, having experienced firsthand the inefficiencies in traditional sales processes.",
-    image: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&h=400&auto=format&fit=crop&q=80",
+    name: "Ryan Alexander Hennesy",
+    role: "CEO & Founder & Visionary",
+    bio: "With over 14 years in sales and business development, Ryan has built and scaled startups across Software Development, FinTech, Automotive, Healthcare, Web3, and Staff Augmentation. He is the founder of Bandera AI, driven by the mission to fully automate lead generation and sales outreach—eliminating manual work and maximizing conversions. A strong believer in data-driven sales, he understands the pain points of inefficient outreach and is building an AI-powered solution to fix them.",
+    image: CEO_avatar,
     fallback: "SJ",
     delay: 0.1,
     contact: {
-      email: "sarah.johnson@bandera-ai.com",
-      phone: "+1 (415) 555-7890",
-      linkedin: "linkedin.com/in/sarahjohnson",
-      twitter: "@sarahjohnson",
-      website: "sarahjohnson.com"
+      email: "ceo@lead-buds.com",
+      // phone: "+1 (415) 555-7890",
+      linkedin: "linkedin.com/in/ryan-alexander-hennesy-b62349136",
+      // twitter: "@sarahjohnson",
+      // website: "sarahjohnson.com"
     }
   },
   {
-    name: "David Chen",
+    name: "Nigel Russell",
     role: "CTO & Co-Founder",
-    bio: "David Chen is a pioneering AI researcher and engineer with a distinguished background in machine learning and natural language processing. After completing his Ph.D. in Artificial Intelligence at Stanford University, David led machine learning teams at Google and OpenAI, where he contributed to groundbreaking projects in conversational AI and predictive analytics. He has published over 30 research papers in top-tier AI conferences and holds 12 patents in machine learning technologies. At Bandera AI, David oversees the development of our proprietary AI algorithms that power lead generation, enrichment, and outreach automation. His expertise in large language models and multi-channel prediction systems forms the technological backbone of our platform. David is committed to creating AI systems that augment human capabilities rather than replace them.",
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&auto=format&fit=crop&q=80",
+    bio: "Nigel is a Software engineer and Project manager proficient with 5+ years of experience in AI, Blockchain and Full-Stack Development, along with 4 years of expertise in Machine Learning and Data Analytics. With a deep understanding of React, Next.js, Solidity, Rust, ElectronJS, and AI-driven automation, he has built smart contracts, AI-powered chatbots, and advanced trading algorithms. Previously, he led teams at MikeToken.io, Managed a team of 3 senior developers to collaborate on the development and enhancement of advanced AI-powered trade protocols (Coin AI). Utilized Python, TensorFlow, and Scikit-learn for AI model development, along with JavaScript and React.js for creating userfriendly interfaces.\n\nAt Bandera AI, Nigel is on a mission to create the first truly AI-driven sales automation platform, leveraging machine learning, predictive analytics, and cutting-edge automation to eliminate manual work and optimize sales outreach.",
+    image: CTO_avatar,
     fallback: "DC",
     delay: 0.2,
     contact: {
-      email: "david.chen@bandera-ai.com",
-      phone: "+1 (650) 555-1234",
-      linkedin: "linkedin.com/in/davidchen",
-      twitter: "@davidchenai",
-      website: "davidchen.ai"
+      email: "nigel.russell.luck@gmail.com",
+      phone: "+1 (401) 477-2068",
+      linkedin: "linkedin.com/in/nigel-russell-0256a2355",
+      twitter: "@nigelrussell93",
+      // website: "davidchen.ai"
     }
   }
 ];
@@ -41,11 +43,11 @@ const teamMembers = [
 const Team = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
-  
+
   return (
     <section id="team" className="section-padding bg-secondary/30 dark:bg-secondary/10">
       <div className="container-custom" ref={ref}>
-        <motion.div 
+        <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -56,11 +58,11 @@ const Team = () => {
             Meet the <span className="text-gradient">Visionaries</span> Behind Bandera AI
           </h2>
           <p className="text-muted-foreground text-lg">
-            Our leadership team combines decades of experience in artificial intelligence, 
+            Our leadership team combines decades of experience in artificial intelligence,
             sales operations, and business growth strategies to revolutionize lead generation.
           </p>
         </motion.div>
-        
+
         <div className="flex flex-col gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
@@ -68,8 +70,8 @@ const Team = () => {
               className="glass-card overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-              transition={{ 
-                duration: 0.5, 
+              transition={{
+                duration: 0.5,
                 delay: member.delay,
                 ease: [0.25, 0.1, 0.25, 1.0]
               }}
@@ -81,13 +83,13 @@ const Team = () => {
                     className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 z-10"
                     whileHover={{ opacity: 1 }}
                   />
-                  <img 
-                    src={member.image} 
-                    alt={member.name} 
-                    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110" 
+                  <img
+                    src={member.image}
+                    alt={member.name}
+                    className="w-full h-full object-cover object-center transition-transform duration-500 hover:scale-110"
                   />
                 </div>
-                
+
                 <div className="p-6 md:col-span-3 flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <Avatar className="h-12 w-12 border-2 border-white dark:border-gray-800">
@@ -99,57 +101,60 @@ const Team = () => {
                       <p className="text-muted-foreground">{member.role}</p>
                     </div>
                   </div>
-                  
+
                   <div className="mb-6">
                     <p className="text-muted-foreground text-sm leading-relaxed">
                       {member.bio}
                     </p>
                   </div>
-                  
+
                   <div className="mt-auto pt-4 border-t border-muted">
                     <h4 className="text-sm font-semibold mb-2">Contact Information:</h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <a 
-                        href={`mailto:${member.contact.email}`} 
+                      <a
+                        href={`mailto:${member.contact.email}`}
                         className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
                       >
                         <Mail className="h-4 w-4 text-bandera-magenta" />
                         <span>{member.contact.email}</span>
                       </a>
-                      <a 
-                        href={`tel:${member.contact.phone}`} 
-                        className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                      >
-                        <Phone className="h-4 w-4 text-bandera-purple" />
-                        <span>{member.contact.phone}</span>
-                      </a>
-                      <a 
-                        href={`https://${member.contact.linkedin}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
+                      {member.contact.phone ?
+                        <a
+                          href={`tel:${member.contact.phone}`}
+                          className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                        >
+                          <Phone className="h-4 w-4 text-bandera-purple" />
+                          <span>{member.contact.phone}</span>
+                        </a> : <></>}
+                      <a
+                        href={`https://${member.contact.linkedin}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
                       >
                         <Linkedin className="h-4 w-4 text-bandera-blue" />
                         <span>{member.contact.linkedin}</span>
                       </a>
-                      <a 
-                        href={`https://twitter.com/${member.contact.twitter.replace('@', '')}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                      >
-                        <Twitter className="h-4 w-4 text-bandera-blue" />
-                        <span>{member.contact.twitter}</span>
-                      </a>
-                      <a 
-                        href={`https://${member.contact.website}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
-                      >
-                        <Globe className="h-4 w-4 text-bandera-purple" />
-                        <span>{member.contact.website}</span>
-                      </a>
+                      {member.contact.twitter ?
+                        <a
+                          href={`https://twitter.com/${member.contact.twitter.replace('@', '')}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                        >
+                          <Twitter className="h-4 w-4 text-bandera-blue" />
+                          <span>{member.contact.twitter}</span>
+                        </a> : <></>}
+                      {/* {member.contact.website ?
+                        <a
+                          href={`https://${member.contact.website}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
+                        >
+                          <Globe className="h-4 w-4 text-bandera-purple" />
+                          <span>{member.contact.website}</span>
+                        </a> : <></>} */}
                     </div>
                   </div>
                 </div>
