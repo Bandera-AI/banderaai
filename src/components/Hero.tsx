@@ -7,7 +7,7 @@ import { Bot, Globe, Shield } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-24 pb-16 overflow-hidden">
+    <section className="relative pt-36 pb-6 overflow-hidden">
       {/* Background gradient */}
       <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-secondary/50 to-transparent dark:from-secondary/10 -z-10" />
       
@@ -65,7 +65,7 @@ const Hero = () => {
               </Button>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 w-[90vw]">
               <motion.div 
                 className="flex items-center gap-4"
                 initial={{ opacity: 0, y: 10 }}
@@ -119,7 +119,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            <div className="glass-card p-2 md:p-4 h-full overflow-hidden">
+            <div className="p-2 md:p-4 h-full overflow-hidden">
               <VideoHero />
             </div>
           </motion.div>

@@ -13,7 +13,7 @@ const VideoHero = () => {
         <img
           src="/lovable-uploads/f0cea33e-a2a6-4c95-b8cd-b84ac33b1f0d.png"
           alt="Bandera AI vs Competitors - Feature Comparison"
-          className="w-full h-full object-contain bg-white dark:bg-gray-900 p-2"
+          className="w-full h-full object-contain bg-[inherit] p-2"
         />
       </div>
     </motion.div>
