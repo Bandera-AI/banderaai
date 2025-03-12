@@ -11,8 +11,8 @@ const VideoHero = () => {
     >
       <div className="relative aspect-video w-full h-full">
         <img
-          src="/lovable-uploads/f0cea33e-a2a6-4c95-b8cd-b84ac33b1f0d.png"
-          alt="Bandera AI vs Competitors - Feature Comparison"
+          src="/lovable-uploads/8ad02e8a-9987-4fd5-85cc-1502ea1e93a8.png"
+          alt="Bandera AI Dashboard"
           className="w-full h-full object-contain bg-[inherit] p-2"
         />
       </div>

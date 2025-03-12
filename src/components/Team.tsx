@@ -32,7 +32,7 @@ const teamMembers = [
     delay: 0.2,
     contact: {
       email: "nigel.russell.luck@gmail.com",
-      phone: "+1 (401) 477-2068",
+      // phone: "+1 (401) 477-2068",
       linkedin: "linkedin.com/in/nigel-russell-0256a2355",
       twitter: "@nigelrussell93",
       // website: "davidchen.ai"
@@ -118,14 +118,14 @@ const Team = () => {
                         <Mail className="h-4 w-4 text-bandera-magenta" />
                         <span>{member.contact.email}</span>
                       </a>
-                      {member.contact.phone ?
+                      {/* {member.contact.phone ?
                         <a
                           href={`tel:${member.contact.phone}`}
                           className="flex items-center gap-2 text-sm hover:text-primary transition-colors"
                         >
                           <Phone className="h-4 w-4 text-bandera-purple" />
                           <span>{member.contact.phone}</span>
-                        </a> : <></>}
+                        </a> : <></>} */}
                       <a
                         href={`https://${member.contact.linkedin}`}
                         target="_blank"
