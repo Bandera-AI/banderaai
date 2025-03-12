@@ -4,10 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeProvider";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +28,20 @@ const Navbar = () => {
     };
   }, []);
 
+  // Function to handle scrolling to sections on home page
+  const scrollToSection = (sectionId) => {
+    if (isHomePage) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      // If not on home page, navigate to home page with section hash
+      window.location.href = `/#${sectionId}`;
+    }
+  };
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -41,12 +58,16 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <img 
-            src="/lovable-uploads/8ad02e8a-9987-4fd5-85cc-1502ea1e93a8.png" 
-            alt="Bandera AI" 
-            className="h-10 w-auto" 
-          />
-          <span className="text-xl font-medium">Bandera AI</span>
+          <Link to="/">
+            <img 
+              src="/lovable-uploads/8ad02e8a-9987-4fd5-85cc-1502ea1e93a8.png" 
+              alt="Bandera AI" 
+              className="h-10 w-auto cursor-pointer" 
+            />
+          </Link>
+          <Link to="/">
+            <span className="text-xl font-medium cursor-pointer">Bandera AI</span>
+          </Link>
         </motion.div>
 
         {/* Desktop Navigation */}
@@ -56,12 +77,12 @@ const Navbar = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <a href="#features" className="link-underline text-sm font-medium">Features</a>
-          <a href="#team" className="link-underline text-sm font-medium">Team</a>
-          <a href="#contact" className="link-underline text-sm font-medium">Contact</a>
+          <button onClick={() => scrollToSection("features")} className="link-underline text-sm font-medium">Features</button>
+          <button onClick={() => scrollToSection("team")} className="link-underline text-sm font-medium">Team</button>
+          <button onClick={() => scrollToSection("contact")} className="link-underline text-sm font-medium">Contact</button>
           <ThemeToggle />
-          <Button variant="default" size="sm" className="bg-bandera-purple text-white">
-            Get Started
+          <Button variant="default" size="sm" className="bg-bandera-purple text-white" asChild>
+            <Link to="/ai-automation">Get Started</Link>
           </Button>
         </motion.nav>
 
@@ -96,33 +117,33 @@ const Navbar = () => {
             transition={{ duration: 0.3, ease: [0.25, 0.1, 0.25, 1.0] }}
           >
             <div className="container-custom flex flex-col gap-5">
-              <a 
-                href="#features" 
-                className="text-base font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => scrollToSection("features")} 
+                className="text-base font-medium py-2 text-left"
               >
                 Features
-              </a>
-              <a 
-                href="#team" 
-                className="text-base font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection("team")} 
+                className="text-base font-medium py-2 text-left"
               >
                 Team
-              </a>
-              <a 
-                href="#contact" 
-                className="text-base font-medium py-2"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection("contact")} 
+                className="text-base font-medium py-2 text-left"
               >
                 Contact
-              </a>
+              </button>
               <Button 
                 variant="default" 
                 size="default"
                 className="w-full bg-gradient-to-r from-bandera-magenta to-bandera-purple text-white"
+                asChild
               >
-                Get Started
+                <Link to="/ai-automation" onClick={() => setIsMobileMenuOpen(false)}>
+                  Get Started
+                </Link>
               </Button>
             </div>
           </motion.div>

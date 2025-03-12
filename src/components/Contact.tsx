@@ -29,21 +29,57 @@ const Contact = () => {
     }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Check if all required fields are filled
+      if (!formData.name || !formData.email || !formData.message) {
+        toast.error("Please fill out all required fields");
+        setIsSubmitting(false);
+        return;
+      }
+      
+      // Prepare the email data
+      const emailData = {
+        to: "nigel.russell0126@gmail.com",
+        subject: `Contact from ${formData.name} - Bandera AI`,
+        message: `
+          Name: ${formData.name}
+          Email: ${formData.email}
+          Company: ${formData.company || 'Not provided'}
+          Message: ${formData.message}
+        `
+      };
+      
+      // Log the email data for now (will be replaced with Supabase Edge Function)
+      console.log("Email data to send:", emailData);
+      
+      // Here you would normally call a Supabase Edge Function
+      // For example:
+      // const { data, error } = await supabase.functions.invoke('send-email', {
+      //   body: emailData
+      // });
+      
+      // if (error) throw error;
+      
+      // For now, simulate success
       toast.success("Message sent successfully! We'll be in touch soon.");
+      
+      // Reset the form
       setFormData({
         name: "",
         email: "",
         company: "",
         message: "",
       });
+    } catch (error) {
+      console.error("Error sending message:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
   
   return (
